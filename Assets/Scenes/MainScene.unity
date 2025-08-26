@@ -651,6 +651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
+  _cam: {fileID: 1118578585}
+  _turnSmoothTime: 0.3
 --- !u!54 &1945513947
 Rigidbody:
   m_ObjectHideFlags: 0
