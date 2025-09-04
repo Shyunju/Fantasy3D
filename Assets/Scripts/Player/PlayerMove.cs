@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace Fantasy3D
 {
+    public enum CameraStyle
+    {
+        Basic,  //tps
+        TopDown
+    }
     public class PlayerMove : MonoBehaviour
     {
         const float MAXSPEED = 7.0f;
@@ -10,6 +15,8 @@ namespace Fantasy3D
         [SerializeField] float _speed;
         [SerializeField] Transform _cam;
         [SerializeField] float _turnSmoothTime = 0.3f;
+        [SerializeField] GameObject _topCam;
+        [SerializeField] GameObject _tpsCam;
 
         float _horizontal;
         float _vertical;
@@ -26,6 +33,8 @@ namespace Fantasy3D
         private void Update()
         {
             SetDirection();
+            if(Input.GetKeyDown(KeyCode.Alpha1)) SwitchCamera(CameraStyle.Basic);
+            if(Input.GetKeyDown(KeyCode.Alpha2)) SwitchCamera(CameraStyle.TopDown);
         }
         private void FixedUpdate()
         {
@@ -61,6 +70,15 @@ namespace Fantasy3D
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _rigidbody.MovePosition(_rigidbody.position + moveDir.normalized * Time.fixedDeltaTime * _speed);
+        }
+
+        void SwitchCamera(CameraStyle newStyle)
+        {
+            _tpsCam.SetActive(false);
+            _topCam.SetActive(false);
+
+            if (newStyle == CameraStyle.Basic) _tpsCam.SetActive(true);
+            if (newStyle == CameraStyle.TopDown) _topCam.SetActive(true);
         }
 
     }
