@@ -6851,7 +6851,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 0
+  UpdateMethod: 2
   BlendUpdateMethod: 0
   LensModeOverride:
     Enabled: 0
@@ -10370,6 +10370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
+    - target: {fileID: 124316, guid: 32f9e7f1053b38c41b83321d0efbe230, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 477680, guid: 32f9e7f1053b38c41b83321d0efbe230, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6
@@ -10420,6 +10424,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 477680, guid: 32f9e7f1053b38c41b83321d0efbe230, type: 3}
   m_PrefabInstance: {fileID: 1945969421}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1950927164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 92378158830886073, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
+  m_PrefabInstance: {fileID: 4496006214408220112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950927167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950927164}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2b5e53f15f2a84fa7521d411cfb156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1954725465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11422,22 +11443,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 504212805642536303, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
-      propertyPath: _cam
-      value: 
-      objectReference: {fileID: 1118578585}
-    - target: {fileID: 504212805642536303, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
-      propertyPath: _topCam
-      value: 
-      objectReference: {fileID: 923733993}
-    - target: {fileID: 504212805642536303, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
-      propertyPath: _tpsCam
-      value: 
-      objectReference: {fileID: 479660867}
     - target: {fileID: 2852119658706598255, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2852119658706598255, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152991075599233851, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693418914871975033, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9aeff7bd23a01764c866cb506353c47b, type: 2}
     - target: {fileID: 8953308192191452840, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11481,7 +11502,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 92378158830886073, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1950927167}
   m_SourcePrefab: {fileID: 100100000, guid: 1575a0731a2662a41abbc5227abf8352, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
