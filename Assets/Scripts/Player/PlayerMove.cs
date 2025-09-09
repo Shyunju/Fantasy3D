@@ -23,18 +23,21 @@ namespace Fantasy3D
         float _turnSmoothVelocity;
         
         Rigidbody _rigidbody;
+        Animator _anim;
         Vector3 _move;
         Vector3 _lookDirection = new(0,0,0);
 
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _anim = GetComponentInChildren<Animator>();
         }
         private void Update()
         {
             SetDirection();
             if(Input.GetKeyDown(KeyCode.Alpha1)) SwitchCamera(CameraStyle.Basic);
             if(Input.GetKeyDown(KeyCode.Alpha2)) SwitchCamera(CameraStyle.TopDown);
+            _anim.SetFloat("Speed",_speed / MAXSPEED);
         }
         private void FixedUpdate()
         {
