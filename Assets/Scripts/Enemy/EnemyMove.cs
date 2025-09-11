@@ -7,10 +7,11 @@ namespace Fantasy3D
     {
         NavMeshAgent _navMeshAGent;
         GameObject _target;
-
+        Animator _animator;
         private void Start()
         {
             _navMeshAGent = GetComponent<NavMeshAgent>();
+            _animator = GetComponentInChildren<Animator>();
             _target = GameObject.Find("Player");
         }
 
@@ -21,8 +22,7 @@ namespace Fantasy3D
                 _navMeshAGent.SetDestination(_target.transform.position);
                 if(_navMeshAGent.remainingDistance <= _navMeshAGent.stoppingDistance)
                 {
-                    //todo
-                    //공격애니메이션
+                    _animator.SetTrigger("Attack");
 
                 }
                 //Debug.Log(_navMeshAGent.remainingDistance);
