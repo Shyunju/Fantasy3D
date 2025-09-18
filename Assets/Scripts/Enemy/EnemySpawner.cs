@@ -48,10 +48,12 @@ namespace Fantasy3D
         {
             Gizmos.color = Color.yellow;
             Vector3 center = transform.position;
+
             Vector3 size = new Vector3(
                 _spawnAreaMax.x - _spawnAreaMin.x, 
                 0,
                 _spawnAreaMax.z - _spawnAreaMin.z);
+
             Gizmos.DrawWireCube(center, size);
         }
          
@@ -65,7 +67,7 @@ namespace Fantasy3D
                     continue;
                 }
 
-                EnemyPrefabPair app = _enemyPrefabPairs[UnityEngine.Random.Range(0, _enemyPrefabPairs.Length)];
+                EnemyPrefabPair app = _enemyPrefabPairs[Random.Range(0, _enemyPrefabPairs.Length)];
                 EnemyType randomType = app.EnemyType;
 
                 if (!_enemyPrefabMap.TryGetValue(randomType, out GameObject prefab))
@@ -74,9 +76,9 @@ namespace Fantasy3D
                     yield return null;
                 }
                 Vector3 spawnPosition = new Vector3(
-                    UnityEngine.Random.Range(_spawnAreaMin.x, _spawnAreaMax.x),
+                    Random.Range(_spawnAreaMin.x, _spawnAreaMax.x),
                     0.1f,
-                    UnityEngine.Random.Range(_spawnAreaMin.z, _spawnAreaMax.z)
+                    Random.Range(_spawnAreaMin.z, _spawnAreaMax.z)
                     );
                 Instantiate(prefab, spawnPosition, Quaternion.identity, this.transform);
                 _currentSpawnCount++;
