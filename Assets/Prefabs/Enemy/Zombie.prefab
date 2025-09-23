@@ -120,6 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee603c1c913a294396729bfd385d35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attckRange: 1
+  _radius: 20
+  _layer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1001 &167626360652122698
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace Fantasy3D
         {
             if(transform.parent == null && other.tag == "Player")
             {
-                PlayerAttack player = other.gameObject.GetComponent<PlayerAttack>();
+                PlayerAttack player = other.gameObject.GetComponentInChildren<PlayerAttack>();
                 if (player != null)
                 {
                     player.EquipRightWeapon(this.gameObject);
@@ -16,7 +16,11 @@ namespace Fantasy3D
             }
             if(other.tag == "Enemy")
             {
-                Destroy(other.gameObject);
+                EnemyMove enemy = other.gameObject.GetComponent<EnemyMove>();
+                if (enemy != null)
+                {
+                    enemy.IsDead = true;
+                }
             }
         }
     }
