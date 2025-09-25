@@ -26,11 +26,18 @@ namespace Fantasy3D
 
         public void AttackStart()
         {
-            _weaponCollider.enabled=true;
+            if (_weaponCollider != null)
+            {
+                _weaponCollider.enabled=true;
+            }
         }
         public void AttackEnd()
         {
-            _weaponCollider.enabled=false;
+            if (_weaponCollider != null)
+            {
+                _weaponCollider.enabled=false;
+
+            }
         }
 
         public void EquipRightWeapon(GameObject obj)
