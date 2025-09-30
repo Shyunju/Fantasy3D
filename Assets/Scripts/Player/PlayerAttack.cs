@@ -36,7 +36,7 @@ namespace Fantasy3D
             if (_weaponCollider != null)
             {
                 _weaponCollider.enabled=false;
-
+                IsAttack = false;
             }
         }
 
@@ -59,7 +59,7 @@ namespace Fantasy3D
 
         void Attack()
         {
-            if(Input.GetButtonDown("Fire1"))
+            if(Input.GetButtonDown("Fire1") && _weaponCollider != null)
             {
                 IsAttack = true;
                 _animator.SetTrigger("Attack");

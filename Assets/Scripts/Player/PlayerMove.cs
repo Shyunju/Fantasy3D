@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ namespace Fantasy3D
     }
     public class PlayerMove : MonoBehaviour
     {
-        const float MAXSPEED = 7.0f;
+        //const 
+        float MAXSPEED = 7.0f;
 
         [SerializeField] float _speed;
         [SerializeField] Transform _cam;
@@ -21,27 +23,34 @@ namespace Fantasy3D
         float _horizontal;
         float _vertical;
         float _turnSmoothVelocity;
+        float _higherSpeed = 15f;
         
         Rigidbody _rigidbody;
         Animator _anim;
         Vector3 _move;
         Vector3 _lookDirection = new(0,0,0);
 
+        PlayerAttack _playerAttack;
+
+
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _anim = GetComponentInChildren<Animator>();
+            _playerAttack = GetComponentInChildren<PlayerAttack>();
         }
         private void Update()
         {
             SetDirection();
             if(Input.GetKeyDown(KeyCode.Alpha1)) SwitchCamera(CameraStyle.Basic);
             if(Input.GetKeyDown(KeyCode.Alpha2)) SwitchCamera(CameraStyle.TopDown);
+            
             _anim.SetFloat("Speed",_speed / MAXSPEED);
         }
         private void FixedUpdate()
         {
-            Move();
+            if(!_playerAttack.IsAttack)
+                Move();
         }
         void SetDirection()
         {
@@ -82,6 +91,18 @@ namespace Fantasy3D
 
             if (newStyle == CameraStyle.Basic) _tpsCam.SetActive(true);
             if (newStyle == CameraStyle.TopDown) _topCam.SetActive(true);
+        }
+        public void PickUpItem(GameObject go)
+        {
+            //여기서 코루틴 호출하게, 아이템은 이 메소드를 호출하게
+        }
+        public IEnumerator SpeedUPCo(GameObject item)
+        {
+            float temp = MAXSPEED;
+            MAXSPEED = _higherSpeed;
+            yield return new WaitForSecondsRealtime(1f);
+            MAXSPEED = temp;
+            Destroy(item.gameObject);
         }
 
     }
