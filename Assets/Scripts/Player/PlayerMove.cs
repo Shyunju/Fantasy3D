@@ -118,7 +118,6 @@ namespace Fantasy3D
             MAXSPEED = _higherSpeed;
             yield return new WaitForSecondsRealtime(1f);
             MAXSPEED = temp;
-            Destroy(item.gameObject);
         }
 
     }

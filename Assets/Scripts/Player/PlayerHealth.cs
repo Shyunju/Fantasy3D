@@ -10,10 +10,13 @@ namespace Fantasy3D
         float _currentHealth = 70f;
         float _originalSize;
         PlayerMove _playerMove;
+        Collider _collider;
+        bool _isDead = false;
 
         private void Start()
         {
             _playerMove = GetComponent<PlayerMove>();
+            _collider = GetComponent<Collider>();
             _originalSize = _healthUI.rectTransform.rect.width;
             ChangeHealth(0f);
             
@@ -23,10 +26,11 @@ namespace Fantasy3D
         {
             _currentHealth = Mathf.Clamp(_currentHealth + mount, 0, _maxHealth);
             _healthUI.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _originalSize * (_currentHealth / _maxHealth));
-            if (_currentHealth == 0)
+            if (_currentHealth == 0 && !_isDead)
             {
                 //game over
                 _playerMove.Anim.SetTrigger("Death");
+                _isDead = true;
             }
         }
     }
