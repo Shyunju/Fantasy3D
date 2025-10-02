@@ -32,6 +32,8 @@ namespace Fantasy3D
 
         PlayerAttack _playerAttack;
 
+        public Animator Anim {  get { return _anim; } }
+
 
         private void Start()
         {
@@ -92,9 +94,20 @@ namespace Fantasy3D
             if (newStyle == CameraStyle.Basic) _tpsCam.SetActive(true);
             if (newStyle == CameraStyle.TopDown) _topCam.SetActive(true);
         }
-        public void PickUpItem(GameObject go)
+        public void PickUpItem(ItemType type, GameObject go)
         {
-            //여기서 코루틴 호출하게, 아이템은 이 메소드를 호출하게
+            switch(type)
+            {
+                case ItemType.Speed:
+                    StartCoroutine(SpeedUPCo(go));
+                    break;
+                case ItemType.Strong:
+                    break;
+                case ItemType.Health:
+                    break;
+                default:
+                    break;
+            }
         }
         public IEnumerator SpeedUPCo(GameObject item)
         {
