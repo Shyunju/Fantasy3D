@@ -31,6 +31,7 @@ namespace Fantasy3D
         Vector3 _lookDirection = new(0,0,0);
 
         PlayerAttack _playerAttack;
+        PlayerHealth _playerHealth;
 
         public Animator Anim {  get { return _anim; } }
 
@@ -40,6 +41,7 @@ namespace Fantasy3D
             _rigidbody = GetComponent<Rigidbody>();
             _anim = GetComponentInChildren<Animator>();
             _playerAttack = GetComponentInChildren<PlayerAttack>();
+            _playerHealth = GetComponent<PlayerHealth>();
         }
         private void Update()
         {
@@ -104,6 +106,7 @@ namespace Fantasy3D
                 case ItemType.Strong:
                     break;
                 case ItemType.Health:
+                    _playerHealth.ChangeHealth(30f);
                     break;
                 default:
                     break;

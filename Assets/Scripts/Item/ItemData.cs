@@ -8,15 +8,14 @@ namespace Fantasy3D
         Strong,
         Health
     }
-    public abstract class ItemData : MonoBehaviour
+    public class ItemData : MonoBehaviour
     {
-        [SerializeField] protected LayerMask _layerMask;
-        [SerializeField] protected float _radius;
-        [SerializeField] protected GameObject _pickUpUI;
-        [SerializeField] protected ItemType _itemType;
-        protected Collider[] _colliders;
-        protected bool _canPickUp = false;
-        protected PlayerMove _playerMove;
+        [SerializeField] LayerMask _layerMask;
+        [SerializeField] float _radius;
+        [SerializeField] ItemType _itemType;
+        Collider[] _colliders;
+        bool _canPickUp = false;
+        PlayerMove _playerMove;
 
         private void Update()
         {
@@ -25,12 +24,16 @@ namespace Fantasy3D
                 if (_playerMove != null)
                 {
                     SendItemInfo();
-                    _pickUpUI.SetActive(false);
+                    GameManager.Instance.PickUpUI.SetActive(false);
                     _canPickUp = false;
                 }
             }
         }
-        protected abstract void SendItemInfo();
+        void SendItemInfo()
+        {
+            _playerMove.PickUpItem(_itemType, this.gameObject);
+            Destroy(this.gameObject);
+        }
 
         private void FixedUpdate()
         {
@@ -47,13 +50,13 @@ namespace Fantasy3D
             _colliders = Physics.OverlapSphere(this.transform.position, _radius, _layerMask);
             if (_colliders.Length > 0)
             {
-                _pickUpUI.SetActive(true);
+                GameManager.Instance.PickUpUI.SetActive(true);
                 _canPickUp = true;
                 _playerMove = _colliders[0].GetComponent<PlayerMove>();
             }
             else
             {
-                _pickUpUI.SetActive(false);
+                GameManager.Instance.PickUpUI.SetActive(false);
                 _canPickUp = false;
             }
         }
