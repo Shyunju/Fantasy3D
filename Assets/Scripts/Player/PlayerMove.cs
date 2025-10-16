@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -35,6 +36,12 @@ namespace Fantasy3D
 
         public Animator Anim {  get { return _anim; } }
 
+        private void Awake()
+        {
+            _cam = Camera.main.transform;
+            _topCam = GameObject.Find("TopCam");
+            _tpsCam = GameObject.Find("TPSCam");
+        }
 
         private void Start()
         {
@@ -42,6 +49,12 @@ namespace Fantasy3D
             _anim = GetComponentInChildren<Animator>();
             _playerAttack = GetComponentInChildren<PlayerAttack>();
             _playerHealth = GetComponent<PlayerHealth>();
+            _topCam.SetActive(true);
+            _tpsCam.SetActive(true);
+
+            _topCam.GetComponent<CinemachineCamera>().Follow = this.transform;
+            _tpsCam.GetComponent<CinemachineCamera>().Follow = this.transform;
+            _tpsCam.SetActive(false);
         }
         private void Update()
         {

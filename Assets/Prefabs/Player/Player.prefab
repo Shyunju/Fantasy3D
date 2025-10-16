@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4656656089845896551}
   - component: {fileID: 5154089867796676090}
   - component: {fileID: 4168128682018228515}
+  - component: {fileID: 6430315398981201664}
+  - component: {fileID: 7961648161950474761}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -115,6 +117,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b563826350aafa449991222b8571ee83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxSize: {x: 0.3, y: 0.05, z: 0.3}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _jumpForce: 7
+  _maxDistance: 0.1
+--- !u!114 &6430315398981201664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852119658706598255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f407a0511f594904ab6f3272deca9fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthUI: {fileID: 0}
+--- !u!114 &7961648161950474761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852119658706598255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2599936310
+  InScenePlacedSourceGlobalObjectIdHash: 1001449934
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &7240085406502138723
 GameObject:
   m_ObjectHideFlags: 0
